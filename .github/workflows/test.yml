@@ -23,7 +23,7 @@ jobs:
 
       - name: Write Env file
         run: |
-          echo "DB_HOST=db" >> ./.env.testing
+          echo "DB_HOST=localhost" >> ./.env.testing
           echo "DB_PORT=3306" >> ./.env.testing
           echo "DB_DATABASE=mysql_database" >> ./.env.testing
           echo "DB_USERNAME=root" >> ./.env.testing
