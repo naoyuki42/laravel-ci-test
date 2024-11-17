@@ -29,10 +29,10 @@ jobs:
       - name: Crate Env file
         run: |
           cp .env.example .env
-          echo "DB_HOST=${DB_HOST}" >> ./.env
-          echo "DB_DATABASE=${DB_DATABASE}" >> ./.env
-          echo "DB_USERNAME=${DB_USERNAME}" >> ./.env
-          echo "DB_PASSWORD=${DB_PASSWORD}" >> ./.env
+          echo "DB_HOST=${{ env.DB_HOST }}" >> ./.env
+          echo "DB_DATABASE=${{ env.DB_DATABASE }}" >> ./.env
+          echo "DB_USERNAME=${{ env.DB_USERNAME }}" >> ./.env
+          echo "DB_PASSWORD=${{ env.DB_PASSWORD }}" >> ./.env
 
       - name: Setup Laravel
         run: |
