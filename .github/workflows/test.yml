@@ -4,5 +4,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, World!"
+      - name: Create Database
+        run: |
+          sudo systemctl start mysql
+          mysql -uroot -proot -e "CREATE DATABASE mysql_database"
+
       - uses: actions/checkout@v4
