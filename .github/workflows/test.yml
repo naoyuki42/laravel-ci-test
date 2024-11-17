@@ -6,10 +6,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      DB_HOST: localhost
-      DB_DATABASE: mysql_database
-      DB_USERNAME: root
-      DB_PASSWORD: root
+      DB_HOST: ${{ vars.DB_HOST }}
+      DB_DATABASE: ${{ vars.DB_DATABASE }}
+      DB_USERNAME: ${{ vars.DB_USERNAME }}
+      DB_PASSWORD: ${{ vars.DB_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
 
