@@ -10,3 +10,19 @@ jobs:
           mysql -uroot -proot -e "CREATE DATABASE mysql_database"
 
       - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Composer Install
+        run: |
+          sed -i \
+              -e 's|APP_URL=http://laravel.test|APP_URL=http://localhost|g' \
+              -e 's|DB_HOST=mysql|DB_HOST=localhost|g' \
+              -e 's|DB_USERNAME=sail|DB_USERNAME=root|g' \
+              -e 's|DB_PASSWORD=password|DB_PASSWORD=root|g' \
+              .env.testing
+          composer install --no-progress --prefer-dist --optimize-autoloader
+          cat .env.testing
