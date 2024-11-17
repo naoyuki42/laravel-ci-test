@@ -21,5 +21,18 @@ jobs:
       - name: Crate Env file
         run: cp .env.example .env.testing
 
-#      - name: Run Tests
-#        run: php artisan test
+      - name: Write Env file
+        run: |
+          echo "DB_HOST=db" >> ./.env.testing
+          echo "DB_PORT=3306" >> ./.env.testing
+          echo "DB_DATABASE=mysql_database" >> ./.env.testing
+          echo "DB_USERNAME=mysql_user" >> ./.env.testing
+          echo "DB_PASSWORD=mysql_pw" >> ./.env.testing
+
+      - name: Setup Laravel
+        run: |
+          php artisan key:generate
+          php artisan migrate
+
+      - name: Run Tests
+        run: php artisan test
