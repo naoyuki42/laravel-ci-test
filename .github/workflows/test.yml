@@ -19,7 +19,7 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Crate Env file
-        run: cp env/.env.testing .env.testing | cat .env.testing
+        run: cp env/.env.testing .env.testing
 
-#      - name: Run Dusk Tests
-#        run: php artisan dusk
+      - name: Run Tests
+        run: php artisan test
