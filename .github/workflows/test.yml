@@ -23,22 +23,10 @@ jobs:
               -e 's|DB_HOST=mysql|DB_HOST=localhost|g' \
               -e 's|DB_USERNAME=sail|DB_USERNAME=root|g' \
               -e 's|DB_PASSWORD=password|DB_PASSWORD=root|g' \
-              /env/.env.testing
-          cp /env/.env.testing .env.testing
+              ./env/.env.testing
+          cp ./env/.env.testing .env.testing
           composer install --no-progress --prefer-dist --optimize-autoloader
 
-#      - name: Npm Build
-#        run: |
-#          npm install
-#          npm run build
-#
-#      - name: Upgrade and Start Chrome Driver
-#        run: |
-#          php artisan dusk:chrome-driver --detect
-#          ./vendor/laravel/dusk/bin/chromedriver-linux &
-#
-#      - name: Run Laravel Server
-#        run: sudo php artisan serve --port=80 --no-reload &
 #
 #      - name: Run Dusk Tests
 #        run: php artisan dusk
