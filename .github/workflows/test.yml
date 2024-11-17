@@ -3,8 +3,9 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-      - uses: actions/checkout@v4
     steps:
+      - uses: actions/checkout@v4
+          -
       - name: Create Database
         run: |
           sudo systemctl start mysql
@@ -21,6 +22,5 @@ jobs:
       - name: Crate Env file
         run: cp env/.env.testing .env.testing | cat .env.testing
 
-#
 #      - name: Run Dusk Tests
 #        run: php artisan dusk
