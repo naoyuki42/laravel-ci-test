@@ -26,7 +26,6 @@ jobs:
           echo "DB_DATABASE=mysql_database" >> ./.env
           echo "DB_USERNAME=root" >> ./.env
           echo "DB_PASSWORD=root" >> ./.env
-          cp .env .env.testing
 
       - name: Setup Laravel
         run: |
@@ -34,4 +33,6 @@ jobs:
           php artisan migrate
 
       - name: Run Tests
-        run: php artisan test --env=testing
+        run: |
+          cp .env .env.testing
+          php artisan test --env=testing
